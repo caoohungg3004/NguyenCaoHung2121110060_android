@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import HomeIcon from './Homeicon';
+import HomeBanner from './HomeBanner';
 
 const Product = ({ item }) => {
   const navigation = useNavigation();
@@ -13,7 +15,7 @@ const Product = ({ item }) => {
   return (
     <View style={styles.product}>
       <TouchableOpacity onPress={handlePress}>
-        <Image style={styles.image} source={{ uri: item.image }} />
+        <Image resizeMethod='contain' style={styles.image} source={{ uri: item.image }} />
       </TouchableOpacity>
       <Text style={styles.title}>{item.title.length > 10 ? item.title.substring(0, 10) + '...' : item.title}</Text>
       <Text style={styles.price}>{item.price} USD</Text>
@@ -52,31 +54,38 @@ const Content = () => {
   const totalPages = Math.ceil(products.length / productsPerPage);
 
   return (
+   
     <View style={styles.container}>
-      <Text style={styles.sectionTitle}>Danh Mục</Text>
-      <ScrollView horizontal>
-        <Image source={require('../assets/product/c1.png')} style={styles.image2} />
-        <Image source={require('../assets/product/c2.png')} style={styles.image2} />
-        <Image source={require('../assets/product/c3.png')} style={styles.image2} />
+      <ScrollView>
+   
+      <HomeIcon/>
+      {/* <HomeBanner/> */}
+        <Text style={styles.sectionTitle}>Danh Mục</Text>
+        <ScrollView horizontal>
+          <Image resizeMethod='contain' source={require('../assets/product/c1.png')} style={styles.image2} />
+          <Image source={require('../assets/product/c2.png')} style={styles.image2} />
+          <Image source={require('../assets/product/c3.png')} style={styles.image2} />
+        </ScrollView>
+        <Text style={styles.sectionTitle}>Sản Phẩm</Text>
+        <ScrollView horizontal style={{ marginTop: 20 }}>
+          {renderProducts}
+        </ScrollView>
+        {/* Nút chuyển trang */}
+        <View style={styles.pagination}>
+          <Button
+            title="Prev"
+            onPress={() => setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))}
+            disabled={currentPage === 1} // Disable nút Prev khi ở trang đầu
+          />
+          <Text>{currentPage}</Text>
+          <Button
+            title="Next"
+            onPress={() => setCurrentPage((prevPage) => (prevPage < totalPages ? prevPage + 1 : prevPage))}
+            disabled={currentPage === totalPages} // Disable nút Next khi ở trang cuối
+          />
+        </View>
       </ScrollView>
-      <Text style={styles.sectionTitle}>Sản Phẩm</Text>
-      <ScrollView horizontal>
-        {renderProducts}
-      </ScrollView>
-      {/* Nút chuyển trang */}
-      <View style={styles.pagination}>
-        <Button
-          title="Prev"
-          onPress={() => setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))}
-          disabled={currentPage === 1} // Disable nút Prev khi ở trang đầu
-        />
-        <Text>{currentPage}</Text>
-        <Button
-          title="Next"
-          onPress={() => setCurrentPage((prevPage) => (prevPage < totalPages ? prevPage + 1 : prevPage))}
-          disabled={currentPage === totalPages} // Disable nút Next khi ở trang cuối
-        />
-      </View>
+
     </View>
   );
 };
@@ -84,9 +93,8 @@ const Content = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 140,
   },
-sectionTitle: {
+  sectionTitle: {
     fontSize: 60,
     marginTop: 10,
   },

@@ -6,16 +6,22 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Content from './components/Content';
 import Productdetail from './components/Productdetail';
+import LoginScreen from './components/Login';
+import SignupScreen from './components/Signup';
+import TabNavigator from './TabNavigation';
+import HomeIcon from './components/Homeicon';
+import CartScreen from './components/CartScreen';
+import HomeBanner from './components/HomeBanner';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" headerMode="none">
+      <Stack.Navigator initialRouteName="Login" headerMode="none">
         <Stack.Screen
           name="Home"
-          component={HomeScreen}
+          component={TabNavigator}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -31,6 +37,9 @@ export default function App() {
             // Nội dung tiêu đề
           }}
         />
+        <Stack.Screen name='Login' component={LoginScreen}/>
+        <Stack.Screen name='Signup' component={SignupScreen}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );
