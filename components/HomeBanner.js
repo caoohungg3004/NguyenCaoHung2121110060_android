@@ -21,20 +21,7 @@
 //     );
 //   };
 
-//   return (
-//     <Carousel
-//       data={images}
-//       renderItem={_renderItem}
-//       sliderWidth={345}
-//       itemWidth={345}
-//       loop={true}
-//       autoplay={true}
-//       autoplayInterval={3000}
-//       containerCustomStyle={{ marginTop: 15 }}
-//       contentContainerCustomStyle={styles.sliderContentContainer}
-//     />
-//   );
-// };
+
 
 // const styles = StyleSheet.create({
 //   slide: {

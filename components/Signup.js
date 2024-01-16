@@ -19,19 +19,22 @@ const SignupScreen = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text>Signup Screen</Text>
-      <TextInput
-        placeholder="Username"
-        value={username}
-        onChangeText={(text) => setUsername(text)}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry
-      />
+    <View style={{ paddingLeft: 10, paddingRight: 10, marginTop: 20 }}>
+    <Text  style={{fontSize:20,textAlign:"center"}}>Đăng Ky Tài Khoản</Text>
+
+    <TextInput
+      placeholder="Tài khoản đăng ky....."
+      value={username}
+      style={{ padding: 10, marginTop: 10,border:1 }}
+      onChangeText={(text) => setUsername(text)}
+    />
+    <TextInput
+      placeholder="Password"
+      value={password}
+      style={{ padding: 10, marginTop: 10,marginBottom:10 }}
+      onChangeText={(text) => setPassword(text)}
+      secureTextEntry
+    />
       <Button title="Signup" onPress={handleSignup} />
       <Text onPress={() => navigation.navigate('Login')}>Already have an account? Login</Text>
     </View>

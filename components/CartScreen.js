@@ -22,24 +22,26 @@ const CartScreen = () => {
     getCartData();
   }, []);
 
-  const updateQuantity = async (productId, newQuantity) => {
-    try {
-      const existingCart = await AsyncStorage.getItem('cart');
-      const cartData = existingCart ? JSON.parse(existingCart) : [];
 
-      const updatedCart = cartData.map((item) => {
-        if (item.id === productId) {
-          return { ...item, quantity: newQuantity };
-        }
-        return item;
-      });
+const updateQuantity = async (productId, newQuantity) => {
+  try {
+    const existingCart = await AsyncStorage.getItem('cart');
+    const cartData = existingCart ? JSON.parse(existingCart) : [];
 
-      await AsyncStorage.setItem('cart', JSON.stringify(updatedCart));
-      setCart(updatedCart); // Đảm bảo rằng state được cập nhật sau khi thay đổi giỏ hàng
-    } catch (error) {
-      console.error('Lỗi khi cập nhật số lượng sản phẩm trong giỏ hàng:', error);
-    }
-  };
+    const updatedCart = cartData.map((item) => {
+      if (item.id === productId) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+
+    await AsyncStorage.setItem('cart', JSON.stringify(updatedCart));
+    setCart(updatedCart); // Đảm bảo rằng state được cập nhật sau khi thay đổi giỏ hàng
+  } catch (error) {
+    console.error('Lỗi khi cập nhật số lượng sản phẩm trong giỏ hàng:', error);
+  }
+};
+
 
   const removeItemFromCart = async (productId) => {
     try {
