@@ -13,6 +13,7 @@ function TabNavigator() {
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Content} />
       
+      
       <Tab.Screen name="Cart" component={CartScreen} />
       
     </Tab.Navigator>

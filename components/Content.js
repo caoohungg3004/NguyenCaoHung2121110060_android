@@ -7,6 +7,8 @@ import HomeBanner from './HomeBanner';
 import HomeSearch from './HomeSearch';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+
 const Product = ({ item }) => {
   const navigation = useNavigation();
 
@@ -90,13 +92,15 @@ const Content = () => {
       <ScrollView>
    
       <HomeIcon/>
-      
+ <HomeBanner/>
       <HomeSearch/>
         <Text style={styles.sectionTitle}>Danh Mục</Text>
         <ScrollView horizontal>
-          <Image resizeMethod='contain' source={require('../assets/product/c1.png')} style={styles.image2} />
-          <Image source={require('../assets/product/c2.png')} style={styles.image2} />
-          <Image source={require('../assets/product/c3.png')} style={styles.image2} />
+          <Image resizeMethod='contain' source={require('../assets/product/c5.png')} style={styles.image2} />
+          <Image source={require('../assets/product/c1.png')} style={styles.image2} />
+          <Image source={require('../assets/product/c6.png')} style={styles.image2} />
+
+          <Image source={require('../assets/product/c7.png')} style={styles.image2} />
           
         </ScrollView>
         <Text style={styles.sectionTitle}>Sản Phẩm</Text>
